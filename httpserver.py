@@ -13,6 +13,7 @@ while True:
     print('connectionSocket is ')
     print(connectionSocket)
     sentence = connectionSocket.recv(1024).decode()
+    print(sentence)
     words = sentence.split()
     print(words[0],words[1])
     if(words[0] == 'GET'):

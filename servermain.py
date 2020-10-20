@@ -5,7 +5,7 @@ import datetime
 
 #default libraries 
 
-import get_response from getting
+from getting import get_response
 
 #created files
 
@@ -18,6 +18,11 @@ print("server is on")
 
 #server port assignment and listening to port
 
+def request_checking(req_list):
+    if(req_list[0] == 'GET'):
+        response = get_response(req_list)
+        return response
+
 
 
 while True:
@@ -29,16 +34,15 @@ while True:
     
 
     #connection to the client
+    while True:
+        request = connection_socket.recv(1024).decode()
+        # print(request)
+        req_list = request.split()
+        response1 = request_checking(req_list)
+        print(response1)
+        connection_socket.send(response1)
+    # connection_socket.send(response1)
+    connection_socket.close()
 
-    request = connection_socket.recv(1024).decode()
-    response1 = request_checking(request)
-    connection_socket.send(response1)
 
 
-def request_checking(request):
-
-    request_list = request.split()
-
-    if(request_list[0] == 'GET'):
-        response = get_response(request_list)
-        return response

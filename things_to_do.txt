@@ -1,0 +1,9 @@
+log _ file for post and all
+
+file for determining access to different file 
+
+file with index of directory without html or php
+
+handling if their is / in end of a get request with length greater than 1
+
+threading
