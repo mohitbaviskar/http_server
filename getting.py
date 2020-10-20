@@ -89,6 +89,16 @@ def get_response(req_list):
                 # Do stuff with byte.
                 body += byte
                 byte = file_pointer.read(1)
+    
+    if(mime_type == 'None'):
+        body = b""
+        with open(file_name, "rb") as file_pointer:
+            byte = file_pointer.read(1)
+            while byte != b"":
+                # Do stuff with byte.
+                body += byte
+                byte = file_pointer.read(1)
+
             
     length = len(body)
 

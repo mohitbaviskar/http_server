@@ -26,7 +26,7 @@
 #for guessing mimetype for content type
 import mimetypes
 
-print(mimetypes.guess_type("logo.gif")[0])
+print(mimetypes.guess_type("favicon.icon")[0])
 #=====================================================================
 
 # i = 33

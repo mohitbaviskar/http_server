@@ -39,7 +39,7 @@ while True:
         # print(request)
         req_list = request.split()
         response1 = request_checking(req_list)
-        print(response1)
+        #print(response1)
         connection_socket.send(response1)
     # connection_socket.send(response1)
     connection_socket.close()
