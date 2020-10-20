@@ -13,7 +13,7 @@ root = "./cakesite"
 # request = input()
 # req_list = request.split()
 
-def get_response(req_list):
+def head_response(req_list):
     print(req_list)
 
     #if just have to check the root dir.
@@ -72,13 +72,10 @@ def get_response(req_list):
     response += ("Date: " + cur_time.strftime("%A") + ", "+ cur_time.strftime("%d") + " " +  cur_time.strftime("%b") + " " + cur_time.strftime("%Y") + " " + cur_time.strftime("%X") + " GMT\n")
     response += "Server: Mohit's server/0.0.1 (Ubuntu)\n"
     #print(file_name)
-
-
-
+    
     last_modified = os.path.getmtime("httpserver.py")
     response += ("last-Modified: " + datetime.datetime.fromtimestamp(last_modified).strftime("%A, %d %b, %Y %I:%M:%S")+ " GMT\n")
     
-
 
 
     mime_type = get_mime_type(file_name)
@@ -90,6 +87,7 @@ def get_response(req_list):
         file_pointer = open(file_name)
         body = file_pointer.read()
         body = body.encode()
+
     elif(read_type == 'image'):
         body = b""
         with open(file_name, "rb") as file_pointer:
@@ -115,14 +113,10 @@ def get_response(req_list):
 
     response += "Content-Type: " + mime_type + "\n"
     response += "Content-Length: " + str(length) + "\n"
-
     response += "Connection: keep-alive\n\n"
     response = response.encode()
-    response_enc = response + body
 
 
-
-    # print(response_enc)
-    return response_enc
-#get_response(req_list)
-
+    
+    return response
+#head_response(req_list)

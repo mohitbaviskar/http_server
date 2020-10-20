@@ -6,6 +6,8 @@ import datetime
 #default libraries 
 
 from getting import get_response
+from heading import head_response
+from posting import post_response
 
 #created files
 
@@ -18,9 +20,16 @@ print("server is on")
 
 #server port assignment and listening to port
 
-def request_checking(req_list):
+def request_checking(request):
+    req_list = request.split()
     if(req_list[0] == 'GET'):
         response = get_response(req_list)
+        return response
+    elif(req_list[0] == 'HEAD'):
+        response = head_response(req_list)
+        return response
+    elif(req_list[0] == 'POST'):
+        response = post_response(request)
         return response
 
 
@@ -36,10 +45,8 @@ while True:
     #connection to the client
     while True:
         request = connection_socket.recv(1024).decode()
-        # print(request)
-        req_list = request.split()
-        response1 = request_checking(req_list)
-        #print(response1)
+        print(request)
+        response1 = request_checking(request)
         connection_socket.send(response1)
     # connection_socket.send(response1)
     connection_socket.close()
