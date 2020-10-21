@@ -1,12 +1,15 @@
 
 #for guessing mimetype for content type
 import mimetypes
-
+import datetime
 
 def get_mime_type(file):
   return mimetypes.guess_type(file)[0]
 
 
+def get_date():
+  cur_time = datetime.datetime.now()
+  return ("Date: " + cur_time.strftime("%A") + ", "+ cur_time.strftime("%d") + " " +  cur_time.strftime("%b") + " " + cur_time.strftime("%Y") + " " + cur_time.strftime("%X") + " GMT\n")
 
 status_dict = {"100": "Continue",
   "101": "Switching Protocols",

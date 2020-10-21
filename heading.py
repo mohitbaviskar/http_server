@@ -68,8 +68,7 @@ def head_response(req_list):
 
 
     response = "HTTP/1.1 "+ status_code_det + " " + status_dict[status_code_det] + "\n"
-    cur_time = datetime.datetime.now()
-    response += ("Date: " + cur_time.strftime("%A") + ", "+ cur_time.strftime("%d") + " " +  cur_time.strftime("%b") + " " + cur_time.strftime("%Y") + " " + cur_time.strftime("%X") + " GMT\n")
+    response += get_date()
     response += "Server: Mohit's server/0.0.1 (Ubuntu)\n"
     #print(file_name)
     
