@@ -4,14 +4,14 @@ import os.path
 from socket import *
 root = "./cakesite"
 
-
+form_complete = "/form.html"
 #request = input()
+data_page = "post_log.txt"
 
 def post_response(request):
     req_list = request.split()
     post_list = request.split('\r\n\r\n')
     print(post_list)
-    data_page = root + req_list[1]
 
     input = req_list[0] + " " + req_list[1] + " " + req_list[2] + " "
 
@@ -28,10 +28,10 @@ def post_response(request):
     input += post_list[1]
     input += " \n"
     
-    file_insert = open("post_log.txt","a")
+    file_insert = open(data_page,"a")
     file_insert.write(input)
 
-    path_to_check = root + req_list[1]
+    path_to_check = root + form_complete
     if(os.path.isfile(path_to_check)):
         file_name = path_to_check
         status_code_det = "200"
@@ -46,7 +46,7 @@ def post_response(request):
 
 
 
-    last_modified = os.path.getmtime("httpserver.py")
+    last_modified = os.path.getmtime(file_name)
     response += ("last-Modified: " + datetime.datetime.fromtimestamp(last_modified).strftime("%A, %d %b, %Y %I:%M:%S")+ " GMT\n")
     
 

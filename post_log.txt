@@ -5,3 +5,5 @@ POST /form.html HTTP/1.1 - - message=mohit+
 POST /form.html HTTP/1.1 Host: - message=fsdklfsdlkfjsdlkfjle+wefusdhfkwe++dkjfdsfk+only+csk 
 POST /action.php HTTP/1.1 Host:127.0.0.1:12003 - message=csk+it+is 
 POST /form.html HTTP/1.1 message=sfsdf 
+POST /posting.py HTTP/1.1 message=efkldflsfjsldfklsd 
+POST /posting.py HTTP/1.1 message=sdfsdfsdf 

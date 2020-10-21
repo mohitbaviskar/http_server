@@ -73,7 +73,7 @@ def head_response(req_list):
     response += "Server: Mohit's server/0.0.1 (Ubuntu)\n"
     #print(file_name)
     
-    last_modified = os.path.getmtime("httpserver.py")
+    last_modified = os.path.getmtime(file_name)
     response += ("last-Modified: " + datetime.datetime.fromtimestamp(last_modified).strftime("%A, %d %b, %Y %I:%M:%S")+ " GMT\n")
     
 

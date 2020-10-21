@@ -75,7 +75,7 @@ def get_response(req_list):
 
 
 
-    last_modified = os.path.getmtime("httpserver.py")
+    last_modified = os.path.getmtime(file_name)
     response += ("last-Modified: " + datetime.datetime.fromtimestamp(last_modified).strftime("%A, %d %b, %Y %I:%M:%S")+ " GMT\n")
     
 
