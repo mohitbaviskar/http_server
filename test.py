@@ -56,6 +56,19 @@
 # print(st)
 
 
-st = "host:dfsdfs\r\nsdfdsf:sdfdsf\r\nConnection:sfsfkjkh\r\ndsfsdfsdfs\r\n"
-s = st.split()
-print(s)
+# st = "host:dfsdfs\r\nsdfdsf:sdfdsf\r\nConnection:sfsfkjkh\r\ndsfsdfsdfs\r\n"
+# s = st.split()
+# print(s)
+
+# f = open("./cakesite/server_data/post_log.txt")
+# print(f.read())
+
+
+# str = '/sdfs/sdfsdf/skfsll'
+# s = str.split('/')
+# sr = ('/').join(s[0:len(s)-1])
+# print(sr)
+
+# m = open("ny.txt","w")
+# m = open("documentroot/sd.tx","w")
+# f = open("document/hello.txt","w")

@@ -2,11 +2,11 @@ import datetime
 from resource import *
 import os.path
 from socket import *
-root = "./cakesite"
+root = "./documentroot"
 
 form_complete = "/form.html"
 #request = input()
-data_page = "post_log.txt"
+data_page = "documentroot/server_data/post_log.txt"
 
 def post_response(request):
     req_list = request.split()
@@ -38,15 +38,15 @@ def post_response(request):
     else:
         status_code_det = "404"
 
-    response = "HTTP/1.1 "+ status_code_det + " " + status_dict[status_code_det] + "\n"
+    response = "HTTP/1.1 "+ status_code_det + " " + status_dict[status_code_det] + "\r\n"
     response += get_date()
-    response += "Server: Mohit's server/0.0.1 (Ubuntu)\n"
+    response += "Server: Mohit's server/0.0.1 (Ubuntu)\r\n"
     #print(file_name)
 
 
 
     last_modified = os.path.getmtime(file_name)
-    response += ("last-Modified: " + datetime.datetime.fromtimestamp(last_modified).strftime("%A, %d %b, %Y %I:%M:%S")+ " GMT\n")
+    response += ("last-Modified: " + datetime.datetime.fromtimestamp(last_modified).strftime("%A, %d %b, %Y %I:%M:%S")+ " GMT\r\n")
     
 
 
@@ -75,10 +75,10 @@ def post_response(request):
             
     length = len(body)
 
-    response += "Content-Type: " + mime_type + "\n"
-    response += "Content-Length: " + str(length) + "\n"
+    response += "Content-Type: " + mime_type + "\r\n"
+    response += "Content-Length: " + str(length) + "\r\n"
 
-    response += "Connection: keep-alive\n\n"
+    response += "Connection: keep-alive\r\n\r\n"
     response = response.encode()
     response_enc = response + body
 

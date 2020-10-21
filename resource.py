@@ -9,7 +9,7 @@ def get_mime_type(file):
 
 def get_date():
   cur_time = datetime.datetime.now()
-  return ("Date: " + cur_time.strftime("%A") + ", "+ cur_time.strftime("%d") + " " +  cur_time.strftime("%b") + " " + cur_time.strftime("%Y") + " " + cur_time.strftime("%X") + " GMT\n")
+  return ("Date: " + cur_time.strftime("%A") + ", "+ cur_time.strftime("%d") + " " +  cur_time.strftime("%b") + " " + cur_time.strftime("%Y") + " " + cur_time.strftime("%X") + " GMT\r\n")
 
 status_dict = {"100": "Continue",
   "101": "Switching Protocols",

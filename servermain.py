@@ -8,7 +8,8 @@ import datetime
 from getting import get_response
 from heading import head_response
 from posting import post_response
-#from putting import put_response
+from putting import put_response
+#from deleting import delete_response
 
 #created files
 
@@ -32,8 +33,13 @@ def request_checking(request):
     elif(req_list[0] == 'POST'):
         response = post_response(request)
         return response
-    #elif(req_list[0] == 'PUT'):
-        #response = put_response
+    elif(req_list[0] == 'PUT'):
+        response = put_response(request)
+        return response
+    # elif(req_list[0] == 'DELETE'):
+    #     response = delete_response(request)
+    #     return response
+
 
 
 
@@ -50,6 +56,7 @@ while True:
         request = connection_socket.recv(1024).decode()
         print(request)
         response1 = request_checking(request)
+        print(response1)
         connection_socket.send(response1)
     # connection_socket.send(response1)
     connection_socket.close()
