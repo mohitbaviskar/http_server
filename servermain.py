@@ -9,7 +9,7 @@ from getting import get_response
 from heading import head_response
 from posting import post_response
 from putting import put_response
-#from deleting import delete_response
+from deleting import delete_response
 
 #created files
 
@@ -36,9 +36,9 @@ def request_checking(request):
     elif(req_list[0] == 'PUT'):
         response = put_response(request)
         return response
-    # elif(req_list[0] == 'DELETE'):
-    #     response = delete_response(request)
-    #     return response
+    elif(req_list[0] == 'DELETE'):
+        response = delete_response(req_list)
+        return response
 
 
 

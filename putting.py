@@ -29,13 +29,12 @@ def put_response(request):
             if(dir_per[req1][1] == 1):
                 new_file = root_for_file_create + req_list[1]
                 f = open(new_file,"w")
-                file_per[new_file] = [1,1]
+                #file_per[new_file] = [1,1,1]
                 f.write(put_list[1])
                 status_code_det = "200"
             else:
                 status_code_det = "405"
         else:
-            print(path_to_check)
             status_code_det = "405"
 
     response = "HTTP/1.1 "+ status_code_det + " " + status_dict[status_code_det] + "\r\n"
