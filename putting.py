@@ -15,7 +15,7 @@ def put_response(request):
     path_to_check = root + req_list[1]
 
     if (os.path.isfile(path_to_check)):
-        if(file_per[req_list[1]][1] == 1):
+        if(req_list[1] not in file_per):
             f = open(path_to_check,"w")
             f.write(put_list[1])
             status_code_det = "200"
@@ -26,10 +26,9 @@ def put_response(request):
         req1 = ('/').join(req[0:len(req)-1])
         path_to_check = root + req1
         if(os.path.isdir(path_to_check)):
-            if(dir_per[req1][1] == 1):
+            if(req1 not in dir_per):
                 new_file = root_for_file_create + req_list[1]
                 f = open(new_file,"w")
-                #file_per[new_file] = [1,1,1]
                 f.write(put_list[1])
                 status_code_det = "200"
             else:

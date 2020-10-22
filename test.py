@@ -72,3 +72,7 @@
 # m = open("ny.txt","w")
 # m = open("documentroot/sd.tx","w")
 # f = open("document/hello.txt","w")
+l = {"dss":[1,2],"sdfsf":[3,4]}
+
+if "dss" in l:
+    print("hello")

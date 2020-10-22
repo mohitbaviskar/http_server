@@ -12,8 +12,6 @@ dir_per = {
     '/' : [1,1,0],
     '/css' : [1,0,0],
     '/images' : [1,0,0],
-    '/dir1' : [1,1,1],
-    '/dir2' : [1,1,1],
     '/permissions':[0,0,0],
     '/server_data':[0,0,0]
 }
@@ -21,9 +19,6 @@ dir_per = {
 
 
 file_per = {
-    "/dir1/hello.txt":[1,1,1],
-    "/dir2/hello.txt":[1,1,1],
-    '/hel.txt':[1,1,1],
     "/404.css" : [1,0,0],
     "/404.html" : [1,0,0],
     "/about.html" : [1,0,0],

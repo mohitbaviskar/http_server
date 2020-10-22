@@ -7,7 +7,6 @@ from documentroot.permissions.file_permissions import *
 root = "./documentroot"
 root_for_file_delete = "documentroot"
 
-
 # request = input()
 # req_list = request.split()
 
@@ -16,7 +15,7 @@ def delete_response(req_list):
     path_to_check = root+req_list[1]
 
     if(os.path.isfile(path_to_check)):
-        if(file_per[req_list[1]][2] == 1):
+        if(req_list[1] not in file_per):
             file_to_del = root_for_file_delete + req_list[1]
             os.remove(file_to_del)
             #del file_per[req_list[1]]
@@ -24,7 +23,7 @@ def delete_response(req_list):
         else:
             status_code_det = "405"
     elif(os.path.isdir(path_to_check)):
-        if(dir_per[req_list[1]][2] == 1):
+        if(req_list[1] not in dir_per):
             dir_to_rmv = root_for_file_delete + req_list[1]
             os.rmdir(dir_to_rmv)
             #del dir_per[req_list[1]]
