@@ -115,7 +115,7 @@ def get_response(req_list):
     response += "Content-Type: " + mime_type + "\r\n"
     response += "Content-Length: " + str(length) + "\r\n"
 
-    response += "Connection: keep-alive\r\n\r\n"
+    response += "Connection: close\r\n\r\n"
     response = response.encode()
     response_enc = response + body
 

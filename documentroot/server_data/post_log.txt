@@ -10,3 +10,6 @@ POST /hel.txt HTTP/1.1 hello i am goodsdfsf
 POST /hel.txt HTTP/1.1 hello i am goodsdfsf 
 POST /hel.txt HTTP/1.1 hello i am goodsdfsf 
 POST /hel.txt HTTP/1.1 hello i am goodsdfsf 
+POST /posting.py HTTP/1.1 message=chrom1 
+POST /posting.py HTTP/1.1 message=chrom2 
+POST /posting.py HTTP/1.1 message=firefox 

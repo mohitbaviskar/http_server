@@ -39,7 +39,7 @@ def delete_response(req_list):
     response += "Server: Mohit's server/0.0.1 (Ubuntu)\r\n"
     response += "Content-Type: " + "None\r\n"
     response += "Content-Length: " + "0\r\n"
-    response += "Connection: keep-alive\r\n\r\n"
+    response += "Connection: close\r\n\r\n"
 
     response = response.encode()
 
