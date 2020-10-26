@@ -33,6 +33,12 @@ def request_handler(connection_socket):
             else:
                 req_list = request.split()
                 if(req_list[0] == 'GET'):
+                    r = request.split('\r\n')
+                    print(r)
+                    # for i in r:
+                    #     if i[0:6] == "Cookie":
+                    #         j = i.split()
+                    #         print(j)
                     response = get_response(req_list)
                 elif(req_list[0] == 'HEAD'):
                     response = head_response(req_list)

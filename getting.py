@@ -2,6 +2,7 @@ import datetime
 from resource import *
 import os.path
 from socket import *
+from headercheck import *
 root = "./documentroot"
 
 #================================================================
@@ -14,7 +15,7 @@ root = "./documentroot"
 # req_list = request.split()
 
 def get_response(req_list):
-    print(req_list)
+    #print(req_list)
 
     #if just have to check the root dir.
 
@@ -114,6 +115,13 @@ def get_response(req_list):
 
     response += "Content-Type: " + mime_type + "\r\n"
     response += "Content-Length: " + str(length) + "\r\n"
+    cookie_res = cookiecheck(req_list)
+    if cookie_res == 1:
+        print("ok")#pages to be made for 404
+    elif cookie_res == 0:
+        print("not ok")#pages to be made for 400
+    elif len(cookie_res) > 0:
+        response += cookie_res
 
     response += "Connection: close\r\n\r\n"
     response = response.encode()

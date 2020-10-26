@@ -72,7 +72,24 @@
 # m = open("ny.txt","w")
 # m = open("documentroot/sd.tx","w")
 # f = open("document/hello.txt","w")
-l = {"dss":[1,2],"sdfsf":[3,4]}
+# l = {"dss":[1,2],"sdfsf":[3,4]}
 
-if "dss" in l:
-    print("hello")
+# if "dss" in l:
+#     print("hello")
+# f = open("documentroot/server_data/cookie.txt","r+")
+# t = f.read()
+# print(t)
+# f.write("dsfsdf=df4r43 \n")
+# l = t.split()
+# print(l)
+
+
+import secrets
+import string
+
+def generate_cookie(length):
+    key = ''.join((secrets.choice(string.ascii_letters) for i in range(length)))
+    value = ''.join((secrets.choice(string.ascii_letters) for i in range(length)))
+    print(key+'='+value)
+
+generate_cookie(10)
