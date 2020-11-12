@@ -2,10 +2,19 @@
 #for guessing mimetype for content type
 import mimetypes
 import datetime
+import hashlib
+import time
+import os.path
 
 def get_mime_type(file):
   return mimetypes.guess_type(file)[0]
 
+
+# def etag(file):
+#   hash = hashlib.sha1()
+#   last_modified = os.path.getmtime("servermain.py")
+#   hash.update((str(last_modified)).encode())
+#   return  "ETag: "+ "\"" + hash.hexdigest() +"\""
 
 def get_date():
   cur_time = datetime.datetime.now()
@@ -54,3 +63,8 @@ status_dict = {"100": "Continue",
 
 # print(status_dict["405"])
 
+
+# file404 = open('/documentroot/dir400/400.html')
+# txt = file404.read()
+
+# res_404 = "HTTP/1.1 404 Not Found\r\n" + get_date() + "Server: Mohit's server/0.0.1 (Ubuntu)\r\n" + "Connection: close\r\n\r\n"

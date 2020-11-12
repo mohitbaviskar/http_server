@@ -84,12 +84,70 @@
 # print(l)
 
 
-import secrets
-import string
+# import secrets
+# import string
 
-def generate_cookie(length):
-    key = ''.join((secrets.choice(string.ascii_letters) for i in range(length)))
-    value = ''.join((secrets.choice(string.ascii_letters) for i in range(length)))
-    print(key+'='+value)
+# def generate_cookie(length):
+#     key = ''.join((secrets.choice(string.ascii_letters) for i in range(length)))
+#     value = ''.join((secrets.choice(string.ascii_letters) for i in range(length)))
+#     print(key+'='+value)
+# generate_cookie(10)
 
-generate_cookie(10)
+# import hashlib
+# import time
+# import os.path
+# hash = hashlib.sha1()
+# last_modified = os.path.getmtime("servermain.py")
+# hash.update(str(last_modified))
+# print last_modified
+# print hash.hexdigest()
+# print hash.hexdigest()[:10]
+# last_modified = os.path.getmtime("posting.py")
+# hash.update(str(last_modified))
+# print last_modified
+# print type(hash.hexdigest())
+# print hash.hexdigest()[:10]
+
+# h = "dfsdf;fsdf"
+# l = "dsf"
+# hi = h.split(';')
+# hi3 = l.split(';')
+# print(hi[0],hi3[0])
+
+# import permissions
+
+# f = open(permissions.file_permissions.py)
+# print(f.read)
+# import datetime
+# x = datetime.datetime.now()
+# import datetime
+# import pytz
+# from tzlocal import get_localzone
+# x = datetime.datetime.now()
+# print(x)
+
+# print(x.strftime("%d/%b/%Y:%X +0530"))
+
+
+# s = "heh"
+
+# f = open('log/access.log','a')
+
+# f.write(s)
+# from configparser import ConfigParser
+
+# parser = ConfigParser()
+# parser.read('server.conf')
+
+# print(parser.get('HOST', 'host'))
+
+# dic = parser.get('TEMPORARY REDIRECT','sdfsdf')
+
+# print(dic)
+from headercheck import *
+req_list = ['sdfs']
+response = "dsf"
+cookie_res = cookiecheck(req_list)
+if len(cookie_res) > 0:
+    response += cookie_res
+print(response)

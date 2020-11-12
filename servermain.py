@@ -3,6 +3,7 @@ import sys
 import os
 import datetime
 import threading
+from signal import signal, SIGINT
 #default libraries 
 
 from getting import get_response
@@ -23,6 +24,11 @@ print("server is on")
 
 #server port assignment and listening to port
 
+def handler(signal_received, frame):
+    print("server stopped")
+    os._exit(1)
+
+
 def request_handler(connection_socket):
     try:
         request = connection_socket.recv(1024).decode('utf-8')
@@ -39,15 +45,15 @@ def request_handler(connection_socket):
                     #     if i[0:6] == "Cookie":
                     #         j = i.split()
                     #         print(j)
-                    response = get_response(req_list)
+                    response = get_response(request)
                 elif(req_list[0] == 'HEAD'):
-                    response = head_response(req_list)
+                    response = head_response(request)
                 elif(req_list[0] == 'POST'):
                     response = post_response(request)
                 elif(req_list[0] == 'PUT'):
                     response = put_response(request)
                 elif(req_list[0] == 'DELETE'):
-                    response = delete_response(req_list)
+                    response = delete_response(request)
             connection_socket.send(response)
             connection_socket.close()
             break
@@ -59,6 +65,8 @@ def request_handler(connection_socket):
 
 
 while True:
+    signal(SIGINT, handler)
+
     connection_socket, addr = server_socket.accept()
     print('new request from')
     print(addr)

@@ -2,18 +2,28 @@ import datetime
 from resource import *
 import os.path
 from socket import *
-root = "./documentroot"
+# root = "./documentroot"
+from configparser import ConfigParser
 
-form_complete = "/form.html"
+parser = ConfigParser()
+parser.read('server.conf')
+
+
+
+root = parser.get('documentroot','documentroot')
+ipadd = parser.get('HOST', 'host')
+
+
+form_complete = "./documentroot/form.html"
 #request = input()
-data_page = "documentroot/server_data/post_log.txt"
 
 def post_response(request):
+    r = request.split('\r\n')
     req_list = request.split()
     post_list = request.split('\r\n\r\n')
     print(post_list)
 
-    input = req_list[0] + " " + req_list[1] + " " + req_list[2] + " "
+    postlog = req_list[0] + " " + req_list[1] + " " + req_list[2] + " "
 
 
 
@@ -25,18 +35,13 @@ def post_response(request):
     # else:
     #     input += "- "
 
-    input += post_list[1]
-    input += " \n"
+    postlog += post_list[1]
+    postlog += " \n"
     
-    file_insert = open(data_page,"a")
-    file_insert.write(input)
+    
 
-    path_to_check = root + form_complete
-    if(os.path.isfile(path_to_check)):
-        file_name = path_to_check
-        status_code_det = "200"
-    else:
-        status_code_det = "404"
+    file_name = form_complete
+    status_code_det = "200"
 
     response = "HTTP/1.1 "+ status_code_det + " " + status_dict[status_code_det] + "\r\n"
     response += get_date()
@@ -46,7 +51,7 @@ def post_response(request):
 
 
     last_modified = os.path.getmtime(file_name)
-    response += ("last-Modified: " + datetime.datetime.fromtimestamp(last_modified).strftime("%A, %d %b, %Y %I:%M:%S")+ " GMT\r\n")
+    response += ("last-Modified: " + datetime.datetime.fromtimestamp(last_modified).strftime("%a, %d %b, %Y %I:%M:%S")+ " GMT\r\n")
     
 
 
@@ -61,14 +66,14 @@ def post_response(request):
         body = file_pointer.read()
         body = body.encode()
     
-    if(mime_type == 'None'):
-        body = b""
-        with open(file_name, "rb") as file_pointer:
-            byte = file_pointer.read(1)
-            while byte != b"":
-                # Do stuff with byte.
-                body += byte
-                byte = file_pointer.read(1)
+    # if(mime_type == 'None'):
+    #     body = b""
+    #     with open(file_name, "rb") as file_pointer:
+    #         byte = file_pointer.read(1)
+    #         while byte != b"":
+    #             # Do stuff with byte.
+    #             body += byte
+    #             byte = file_pointer.read(1)
 
 
 
@@ -79,6 +84,29 @@ def post_response(request):
     response += "Content-Length: " + str(length) + "\r\n"
 
     response += "Connection: close\r\n\r\n"
+
+    accesslog = ipadd + " " + "-" + " "
+    accesslog += "-" + " "
+    x = datetime.datetime.now()
+    accesslog += "[" + x.strftime("%d/%b/%Y:%X +0530") + "]" + " "
+    accesslog += "\"" + r[0] + "\"" + " " 
+    accesslog += status_code_det + " "
+    accesslog += str(length) + " " +"\n"
+    f = open('log/access.log','a')
+    f.write(accesslog)
+    file_insert = open('log/post.log','a')
+    file_insert.write(postlog)
+
+    error = ["400","401","405","404","407","406"]
+    if status_code_det in error:
+        errorlog = x.strftime("[%a %b %d %X.%f %Y]")
+        errorlog += " " + "[error]" + " "
+        errorlog += "[" +"pid" + str(os.getpid()) + "]" + " "
+        errorlog += "[client " +ipadd + "]" + " "
+        errorlog += status_dict[status_code_det] + "\n"
+        f = open('log/error.log','a')
+        f.write(errorlog)
+
     response = response.encode()
     response_enc = response + body
 
